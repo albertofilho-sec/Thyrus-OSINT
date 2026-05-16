@@ -86,12 +86,21 @@ def execute_command(command, output_file=None):
                     command,
                     stdout=file,
                     stderr=subprocess.STDOUT,
-                    text=True
+                    text=True,
+                    check=False
                 )
 
         else:
 
-            subprocess.run(command)
+            subprocess.run(
+                command,
+                text=True,
+                check=False
+            )
+            
+    except FileNotFoundError:
+
+        print(f"{Fore.RED}[!] Ferramenta não encontrada no sistema.")        
 
     except Exception as e:
 
@@ -178,7 +187,7 @@ def main():
                 print(f"{Fore.RED}[!] theHarvester não encontrado.")
                 continue
 
-            output = f"{RESULT_DIR}/{alvo_safe}_{ts}.html"
+            output = f"{RESULT_DIR}/{alvo_safe}_{ts}"
 
             execute_command([
                 "theHarvester",
@@ -234,11 +243,22 @@ def main():
             if not check_tool("exiftool"):
                 print(f"{Fore.RED}[!] ExifTool não encontrado.")
                 continue
-
-            execute_command([
-                "exiftool",
-                alvo
-            ])
+                
+            if not os.path.exists(alvo):
+                print(f"{Fore.RED}[!] Arquivo não encontrado.")
+                continue
+        
+            output = f"{RESULT_DIR}/{alvo_safe}_metadata_{ts}.txt"
+        
+            execute_command(
+                [
+                    "exiftool",
+                    alvo
+                ],
+                output
+            )
+            
+            print(f"{Fore.GREEN}[+] Resultado salvo em: {output}")
 
         input(f"\n{Fore.YELLOW}Pressione Enter para retornar ao menu principal...")
 
