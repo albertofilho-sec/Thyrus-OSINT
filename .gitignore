@@ -2,3 +2,4 @@
 __pycache__/
 resultados/
 *.log
+*.pdf
