@@ -244,21 +244,31 @@ def main():
                 print(f"{Fore.RED}[!] ExifTool não encontrado.")
                 continue
                 
+            alvo = alvo.strip().strip('"').strip("'")    
+                
             if not os.path.exists(alvo):
                 print(f"{Fore.RED}[!] Arquivo não encontrado.")
                 continue
         
             output = f"{RESULT_DIR}/{alvo_safe}_metadata_{ts}.txt"
         
-            execute_command(
-                [
-                    "exiftool",
-                    alvo
-                ],
-                output
-            )
+            try:
+
+                with open(output, "w") as file:
+
+                    subprocess.run(
+                        ["exiftool", alvo],
+                        stdout=file,
+                        stderr=subprocess.STDOUT,
+                        text=True,
+                        check=False
+                    )
             
-            print(f"{Fore.GREEN}[+] Resultado salvo em: {output}")
+                print(f"{Fore.GREEN}[+] Resultado salvo em: {output}")
+            
+            except Exception as e:
+
+                print(f"{Fore.RED}[!] Erro no ExifTool: {e}")
 
         input(f"\n{Fore.YELLOW}Pressione Enter para retornar ao menu principal...")
 
