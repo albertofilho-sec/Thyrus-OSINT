@@ -1,0 +1,6 @@
+colorama
+sherlock-project
+maigret
+holehe
+socialscan
+sublist3r
