@@ -119,10 +119,10 @@ O uso indevido da ferramenta é de responsabilidade exclusiva do operador.
 Alberto Filho
 
 ## 💼 LinkedIn:
-linkedin.com/in/albertofilho-sec
+linkedin.com/in/albertofilho-cy
 
 ## 💻 GitHub:
-github.com/albertofilho-sec
+github.com/albertofilho-cy
 
 
 <p align="center"> <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=120&color=0:0f172a,100:06b6d4"/> </p>
