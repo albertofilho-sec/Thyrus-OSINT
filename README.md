@@ -76,7 +76,7 @@ Distribuições suportadas:
 
 ## 📦 Instalação
 
-1. git clone https://github.com/albertofilho-sec/Thyrus-OSINT.git  
+1. git clone https://github.com/albertofilho-cy/Thyrus-OSINT.git  
 2. cd Thyrus-OSINT  
 3. chmod +x install.sh  
 4. ./install.sh  
